@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     document.querySelectorAll('.copy-email').forEach(button => {
         button.addEventListener('click', function() {
-            const email = 'kidigregoire@gmail.com';
+            const email = 'kozgregoire@gmail.com';
             
             navigator.clipboard.writeText(email).then(() => {
                 const originalText = this.innerHTML;
