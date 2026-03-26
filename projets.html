@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Projets | KIDINA.ARCHI</title>
+    
+    <!-- Liens CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root {
+            --dominant: #f8f9fa;
+            --secondary: #212529;
+            --accent: #0d6efd;
+            --gray-light: #e9ecef;
+            --gray-medium: #6c757d;
+        }
+        
+        body {
+            background-color: var(--dominant);
+            color: var(--secondary);
+            font-family: 'Inter', sans-serif;
+            padding-top: 80px;
+        }
+        
+        .project-card {
+            background: white;
+            border: 1px solid var(--gray-light);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .project-image {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(13, 110, 253, 0.9);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .filter-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--gray-light);
+            color: var(--gray-medium);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+        
+        .project-tag {
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray-medium);
+        }
+        
+        .modal-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .project-detail-item {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .project-detail-item i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" style="background-color: white;">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                KIDINA<span style="color: #0d6efd;">.ARCHI</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold active" href="projets.html">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="experience.html">Expérience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="cursus.html">Cursus</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="competences.html">Compétences</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-primary px-4 py-2 rounded-pill" href="contact.html" style="background-color: #0d6efd; border-color: #0d6efd;">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Projets -->
+    <section class="py-5" style="background-color: var(--dominant);">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-2 fw-bold mb-4">
+                        Portfolio <span style="color: #0d6efd;">Projets</span>
+                    </h1>
+                    <p class="lead" style="color: var(--gray-medium);">
+                        Sélection de réalisations architecturales variées, 
+                        du résidentiel à l'institutionnel, illustrant mon expertise.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Filtres -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="filter-bar">
+                        <button class="filter-btn active" data-filter="all">
+                            <i class="fas fa-layer-group me-2"></i>Tous les projets
+                        </button>
+                        <button class="filter-btn" data-filter="institutionnel">
+                            <i class="fas fa-building me-2"></i>Institutionnel
+                        </button>
+                        <button class="filter-btn" data-filter="residentiel">
+                            <i class="fas fa-home me-2"></i>Résidentiel
+                        </button>
+                        <button class="filter-btn" data-filter="rehabilitation">
+                            <i class="fas fa-sync-alt me-2"></i>Réhabilitation
+                        </button>
+                        <button class="filter-btn" data-filter="commercial">
+                            <i class="fas fa-store me-2"></i>Commercial
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grille de projets -->
+            <div class="row g-4" id="projects-grid">
+                <!-- Projet 1 : Siège OTR -->
+                <div class="col-md-6 col-lg-4 project-item institutionnel" data-project="1">
+                    <div class="project-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Siège OTR" 
+                                 class="project-image">
+                            <span class="project-badge">Institutionnel</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2">Siège OTR - Cité OUA</h4>
+                            <p class="text-muted mb-3">Réaménagement complet des locaux R+2 et R+3</p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="project-tag">R+4</span>
+                                <span class="project-tag">2020</span>
+                                <span class="project-tag">Lomé</span>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal1">
+                                    <i class="fas fa-eye me-1"></i>Détails
+                                </button>
+                                <small class="text-muted">Poste : Dessinateur des plans</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet 2 : Villa Duplex -->
+                <div class="col-md-6 col-lg-4 project-item residentiel" data-project="2">
+                    <div class="project-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Villa Duplex" 
+                                 class="project-image">
+                            <span class="project-badge">Résidentiel</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2">Villa Duplex</h4>
+                            <p class="text-muted mb-3">Villa haut standing avec édicule - Suivi TCE</p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="project-tag">R+1</span>
+                                <span class="project-tag">2018-présent</span>
+                                <span class="project-tag">Lomé</span>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal2">
+                                    <i class="fas fa-eye me-1"></i>Détails
+                                </button>
+                                <small class="text-muted">Poste : Contrôleur des travaux</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet 3 : Complexe USP CNSS -->
+                <div class="col-md-6 col-lg-4 project-item institutionnel" data-project="3">
+                    <div class="project-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="c:\Users\DELL\Documents\S1_L2\python\KIDINA\DASHBOARD\images\WhatsApp Image 2026-03-21 at 13.13.04 (1).jpeg" 
+                                 alt="Complexe USP CNSS" 
+                                 class="project-image">
+                            <span class="project-badge">Institutionnel</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2">Complexe USP CNSS</h4>
+                            <p class="text-muted mb-3">Bâtiment R+3 pour la Caisse Nationale</p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="project-tag">R+3</span>
+                                <span class="project-tag">2018-présent</span>
+                                <span class="project-tag">Lomé</span>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal3">
+                                    <i class="fas fa-eye me-1"></i>Détails
+                                </button>
+                                <small class="text-muted">Poste : Contrôleur non permanent</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet 4 : CNSS Sokodé -->
+                <div class="col-md-6 col-lg-4 project-item rehabilitation" data-project="4">
+                    <div class="project-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="c:\Users\DELL\Documents\S1_L2\python\KIDINA\DASHBOARD\images\WhatsApp Image 2026-03-21 at 13.13.02 (2).jpeg" 
+                                 alt="CNSS Sokodé" 
+                                 class="project-image">
+                            <span class="project-badge">Réhabilitation</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2">CNSS Sokodé</h4>
+                            <p class="text-muted mb-3">Réhabilitation de bâtiment R+2</p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="project-tag">R+2</span>
+                                <span class="project-tag">2019-présent</span>
+                                <span class="project-tag">Sokodé</span>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal4">
+                                    <i class="fas fa-eye me-1"></i>Détails
+                                </button>
+                                <small class="text-muted">Poste : Concepteur</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet 5 : Villa Kara -->
+                <div class="col-md-6 col-lg-4 project-item residentiel" data-project="5">
+                    <div class="project-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src=""
+                                 class="project-image">
+                            <span class="project-badge">Résidentiel</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2">Villa Kara</h4>
+                            <p class="text-muted mb-3">Villa haut standing avec piscine</p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="project-tag">RDC + Paillotes</span>
+                                <span class="project-tag">2019-2020</span>
+                                <span class="project-tag">Kara</span>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal5">
+                                    <i class="fas fa-eye me-1"></i>Détails
+                                </button>
+                                <small class="text-muted">Poste : Concepteur</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet 6 : Restaurant Dota Lafiè -->
+                <div class="col-md-6 col-lg-4 project-item commercial" data-project="6">
+                    <div class="project-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Restaurant Dota Lafiè" 
+                                 class="project-image">
+                            <span class="project-badge">Commercial</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="fw-bold mb-2">Restaurant Dota Lafiè</h4>
+                            <p class="text-muted mb-3">Complexe restaurant & blanchisserie</p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="project-tag">RDC</span>
+                                <span class="project-tag">2022</span>
+                                <span class="project-tag">Lomé</span>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectModal6">
+                                    <i class="fas fa-eye me-1"></i>Détails
+                                </button>
+                                <small class="text-muted">Poste : Concepteur</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Message pour ajout futur -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="card border-0 p-5" style="background-color: rgba(13, 110, 253, 0.05); border-radius: 12px;">
+                        <i class="fas fa-images fa-3x mb-3" style="color: #0d6efd;"></i>
+                        <h4 class="fw-bold mb-3">Plus de projets à venir</h4>
+                        <p class="text-muted mb-0">
+                            Cette galerie sera enrichie avec les images professionnelles 
+                            des projets dès leur réception. Structure prête pour l'ajout 
+                            facile de nouveaux projets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals pour les détails des projets -->
+    
+    <!-- Modal Projet 1 -->
+    <div class="modal fade" id="projectModal1" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Siège OTR - Cité OUA</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Siège OTR" class="modal-image">
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="project-detail-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>Période :</strong> Novembre 2020
+                                </div>
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Localisation :</strong> Cité OUA, Lomé
+                                </div>
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-building"></i>
+                                <div>
+                                    <strong>Type :</strong> Bâtiment institutionnel R+4
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="project-detail-item">
+                                <i class="fas fa-user-tie"></i>
+                                <div>
+                                    <strong>Poste :</strong> Dessinateur des plans de recollement
+                                </div>
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-tasks"></i>
+                                <div>
+                                    <strong>Mission :</strong> Plans modifiés et recollement
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h6 class="fw-bold mb-2">Description :</h6>
+                    <p class="text-muted">
+                        Réaménagement complet des locaux aux étages R+2 et R+3 du siège général de l'OTR. 
+                        Travaux incluant la modification des plans existants et la création de nouveaux 
+                        espaces de travail optimisés.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Projet 2 -->
+    <div class="modal fade" id="projectModal2" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Villa Duplex Lomé</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Villa Duplex" class="modal-image">
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="project-detail-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>Période :</strong> 2018 - Présent
+                                </div>
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Localisation :</strong> Lomé, Togo
+                                </div>
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-home"></i>
+                                <div>
+                                    <strong>Type :</strong> Villa résidentielle R+1 avec édicule
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="project-detail-item">
+                                <i class="fas fa-user-tie"></i>
+                                <div>
+                                    <strong>Poste :</strong> Contrôleur des travaux
+                                </div>
+                            </div>
+                            <div class="project-detail-item">
+                                <i class="fas fa-tasks"></i>
+                                <div>
+                                    <strong>Missions :</strong> Suivi TCE, contrôle qualité, réception
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h6 class="fw-bold mb-2">Description :</h6>
+                    <p class="text-muted">
+                        Villa duplex haut standing avec édicule indépendant. Suivi complet du chantier 
+                        Tous Corps d'État, depuis les fondations jusqu'à la finition. Contrôle qualité 
+                        rigoureux et respect des délais.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ajouter les autres modals de la même manière... -->
+
+    <!-- Footer -->
+    <!-- Copier le footer de index.html ici -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filtrage des projets
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectItems = document.querySelectorAll('.project-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Retirer la classe active de tous les boutons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Ajouter la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Filtrer les projets
+                    projectItems.forEach(item => {
+                        if (filter === 'all' || item.classList.contains(filter)) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 100);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.9)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // Animation au scroll
+            const revealElements = () => {
+                const elements = document.querySelectorAll('.project-item');
+                const windowHeight = window.innerHeight;
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', revealElements);
+            revealElements();
+        });
+    </script>
+</body>
+</html>

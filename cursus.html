@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursus Académique | KIDINA.ARCHI</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root {
+            --dominant: #f8f9fa;
+            --secondary: #212529;
+            --accent: #0d6efd;
+            --gray-light: #e9ecef;
+            --gray-medium: #6c757d;
+        }
+        
+        body {
+            background-color: var(--dominant);
+            color: var(--secondary);
+            font-family: 'Inter', sans-serif;
+            padding-top: 80px;
+        }
+        
+        /* ESPACEMENT RÉDUIT ICI */
+        .section-compact {
+            padding: 3rem 0 !important;
+        }
+        
+        .card-compact {
+            padding: 1.25rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .timeline-edu {
+            padding-left: 25px;
+            margin-top: 1rem;
+        }
+        
+        .timeline-edu::before {
+            left: 12px;
+        }
+        
+        .timeline-item-edu {
+            margin-bottom: 2rem !important;
+            padding-left: 25px;
+        }
+        
+        .edu-badge {
+            margin-bottom: 0.5rem !important;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.8rem;
+        }
+        
+        h1.display-2 {
+            font-size: 2.5rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+        
+        p.lead {
+            margin-bottom: 2rem !important;
+            font-size: 1.1rem;
+        }
+        
+        /* Réduire l'espace entre les lignes */
+        .timeline-item-edu h4 {
+            margin-bottom: 0.5rem !important;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-item-edu p {
+            margin-bottom: 0.5rem !important;
+            line-height: 1.5;
+        }
+        
+        .country-flag {
+            width: 20px;
+            height: 14px;
+            margin-right: 6px;
+        }
+        
+        /* Pour les petits écrans */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .section-compact {
+                padding: 2rem 0 !important;
+            }
+            
+            h1.display-2 {
+                font-size: 2rem !important;
+            }
+            
+            .card-compact {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .timeline-item-edu {
+                margin-bottom: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (identique) -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm" style="background-color: white;">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                KIDINA<span style="color: #0d6efd;">.ARCHI</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-3">
+                    <li class="nav-item"><a class="nav-link fw-bold" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="projets.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="experience.html">Expérience</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold active" href="cursus.html">Cursus</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="competences.html">Compétences</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-primary px-3 py-2 rounded-pill" href="contact.html" style="background-color: #0d6efd; border-color: #0d6efd;">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Cursus - ESPACEMENT RÉDUIT -->
+    <section class="section-compact">
+        <div class="container">
+            <!-- Titre plus compact -->
+            <div class="row mb-4">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-2 fw-bold mb-3">
+                        Parcours <span style="color: #0d6efd;">Académique</span>
+                    </h1>
+                    <p class="lead mb-4" style="color: var(--gray-medium); max-width: 600px; margin: 0 auto;">
+                        Un parcours académique  alliant
+                         formation technique et excellence internationale.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Formation Supérieure - CARTE PLUS COMPACTE -->
+            <div class="row mb-4">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card-compact shadow-sm border-0" style="background: white; border-radius: 10px;">
+                        <div class="card-body">
+                            <h3 class="fw-bold mb-3" style="color: #0d6efd;">
+                                <i class="fas fa-graduation-cap me-2"></i>Formation Supérieure
+                            </h3>
+                            
+                            <div class="timeline-edu">
+                                <!-- Master 2 Russie -->
+                                <div class="timeline-item-edu">
+                                    <span class="edu-badge">2024 - 2025</span>
+                                    <h4 class="fw-bold">Master 2 Architecture</h4>
+                                    <div class="d-flex align-items-center mb-1">
+                                        <img src="https://flagcdn.com/w40/ru.png" class="country-flag" alt="Russie">
+                                        <h5 class="mb-0" style="font-size: 1rem;">Université d'État de Penza (PGUAS)</h5>
+                                    </div>
+                                    <p class="mb-0 small" style="color: var(--gray-medium);">
+                                        Spécialisation en conception architecturale avancée.
+                                    </p>
+                                </div>
+                                
+                                <!-- Master 1 Russie -->
+                                <div class="timeline-item-edu">
+                                    <span class="edu-badge">2023 - 2024</span>
+                                    <h4 class="fw-bold">Master 1 Architecture</h4>
+                                    <div class="d-flex align-items-center mb-1">
+                                        <img src="https://flagcdn.com/w40/ru.png" class="country-flag" alt="Russie">
+                                        <h5 class="mb-0" style="font-size: 1rem;">Université d'État de Penza (PGUAS)</h5>
+                                    </div>
+                                    <p class="mb-0 small" style="color: var(--gray-medium);">
+                                        Approfondissement des techniques de conception.
+                                    </p>
+                                </div>
+                                
+                                <!-- Licence Togo -->
+                                <div class="timeline-item-edu">
+                                    <span class="edu-badge">2018 - 2019</span>
+                                    <h4 class="fw-bold">Licence Professionnelle en Architecture</h4>
+                                    <div class="d-flex align-items-center mb-1">
+                                        <img src="https://flagcdn.com/w40/tg.png" class="country-flag" alt="Togo">
+                                        <h5 class="mb-0" style="font-size: 1rem;">ESTABAT - Architecture et Topographie</h5>
+                                    </div>
+                                    <p class="mb-0 small" style="color: var(--gray-medium);">
+                                        Formation complète en conception et gestion de projet.
+                                    </p>
+                                </div>
+                                
+                                <!-- BTS Togo -->
+                                <div class="timeline-item-edu">
+                                    <span class="edu-badge">2017 - 2018</span>
+                                    <h4 class="fw-bold">BTS en Architecture</h4>
+                                    <div class="d-flex align-items-center mb-1">
+                                        <img src="https://flagcdn.com/w40/tg.png" class="country-flag" alt="Togo">
+                                        <h5 class="mb-0" style="font-size: 1rem;">ESTABAT - Lomé, Togo</h5>
+                                    </div>
+                                    <p class="mb-0 small" style="color: var(--gray-medium);">
+                                        Formation technique avec stages pratiques.
+                                    </p>
+                                </div>
+                                
+                                <!-- Première année Togo -->
+                                <div class="timeline-item-edu">
+                                    <span class="edu-badge">2016 - 2017</span>
+                                    <h4 class="fw-bold">Première année de Licence</h4>
+                                    <div class="d-flex align-items-center mb-1">
+                                        <img src="https://flagcdn.com/w40/tg.png" class="country-flag" alt="Togo">
+                                        <h5 class="mb-0" style="font-size: 1rem;">ESTABAT - Techniques du Bâtiment</h5>
+                                    </div>
+                                    <p class="mb-0 small" style="color: var(--gray-medium);">
+                                        Initiation aux fondamentaux de l'architecture.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formation Secondaire - PLUS COMPACTE -->
+            <div class="row mb-4">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card-compact shadow-sm border-0" style="background: white; border-radius: 10px;">
+                        <div class="card-body">
+                            <h3 class="fw-bold mb-3" style="color: #0d6efd;">
+                                <i class="fas fa-school me-2"></i>Formation Secondaire
+                            </h3>
+                            
+                            <div class="row align-items-center">
+                                <div class="col-md-2 text-center mb-2 mb-md-0">
+                                    <div style="background-color: rgba(13, 110, 253, 0.1); border-radius: 8px; padding: 0.75rem; display: inline-block;">
+                                        <i class="fas fa-university" style="color: #0d6efd; font-size: 1.5rem;"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <span class="edu-badge">2015 - 2016</span>
+                                    <h4 class="fw-bold mb-1">BAC II Série D</h4>
+                                    <div class="d-flex align-items-center mb-1">
+                                        <img src="https://flagcdn.com/w40/tg.png" class="country-flag" alt="Togo">
+                                        <h5 class="mb-0" style="font-size: 1rem;">Lycée de LYATA - Atakpamé, Togo</h5>
+                                    </div>
+                                    <p class="mb-0 small" style="color: var(--gray-medium);">
+                                        Baccalauréat scientifique option Sciences de la Vie et de la Terre (SVT).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Compétences Académiques - EN 2 COLONNES COMPACTES -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="card-compact border-0" style="background-color: rgba(13, 110, 253, 0.05);">
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-2" style="color: #0d6efd; font-size: 1rem;">
+                                <i class="fas fa-award me-1"></i>Avances
+                            </h5>
+                            <ul class="list-unstyled mb-0" style="font-size: 0.9rem;">
+                              
+                                <li class="mb-1"><i class="fas fa-check-circle me-1" style="color: #0d6efd; font-size: 0.8rem;"></i>Maîtrise des normes internationales</li>
+                                <li class="mb-1"><i class="fas fa-check-circle me-1" style="color: #0d6efd; font-size: 0.8rem;"></i>Approche technique et créative</li>
+                                <li><i class="fas fa-check-circle me-1" style="color: #0d6efd; font-size: 0.8rem;"></i>Adaptation multiculturelle</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card-compact border-0" style="background-color: rgba(13, 110, 253, 0.05);">
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-2" style="color: #0d6efd; font-size: 1rem;">
+                                <i class="fas fa-globe-africa me-1"></i>Expertise Internationale
+                            </h5>
+                            <ul class="list-unstyled mb-0" style="font-size: 0.9rem;">
+                                <li class="mb-1"><i class="fas fa-check-circle me-1" style="color: #0d6efd; font-size: 0.8rem;"></i>Connaissance des marchés </li>
+                                <li class="mb-1"><i class="fas fa-check-circle me-1" style="color: #0d6efd; font-size: 0.8rem;"></i>Adaptation aux climats différents</li>
+                                <li class="mb-1"><i class="fas fa-check-circle me-1" style="color: #0d6efd; font-size: 0.8rem;"></i>Compréhension réglementations locales</li>
+                                <li><i class="fas fa-check-circle me-1" style="color: #0d6efd; font-size: 0.8rem;"></i>Réseau professionnel international</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (copier celui de index.html) -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
