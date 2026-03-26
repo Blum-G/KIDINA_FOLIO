@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Success message
                 const successAlert = `
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.
+                        Message n'a pas été envoyé🤦‍♂️. Veuillez copier le mail m'envoyer le message en privé
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
